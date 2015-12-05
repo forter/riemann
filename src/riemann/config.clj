@@ -50,6 +50,7 @@
         [riemann.mailgun :only [mailgun]]
         [riemann.twilio :only [twilio]]
         [riemann.boundary :only [boundary]]
+        [riemann.pushover :only [pushover]]
         riemann.streams))
 
 (def core "The currently running core."
@@ -398,7 +399,10 @@
     (binding [*config-file* path
               *ns* (find-ns 'riemann.config)]
       (if (.isDirectory file)
-        (doseq [f (file-seq file)]
-          (when (config-file? f)
-            (load-file (.toString f))))
+        (->> file
+             file-seq
+             (filter config-file?)
+             (map str)
+             (map include)
+             dorun)
         (load-file path)))))
