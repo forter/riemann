@@ -7,6 +7,7 @@
   :jvm-opts ["-server" "-Xms1024m" "-Xmx1024m" "-XX:+UseParNewGC" "-XX:+UseConcMarkSweepGC" "-XX:+CMSParallelRemarkEnabled" "-XX:+AggressiveOpts" "-XX:+UseFastAccessorMethods" "-XX:+CMSClassUnloadingEnabled"]
   :maintainer {:email "aphyr@aphyr.com"}
   :dependencies [
+    [com.taoensso/nippy "2.14.0"]
     [org.clojure/algo.generic "0.1.2"]
     [org.clojure/clojure "1.8.0"]
     [org.clojure/math.numeric-tower "0.0.4"]
@@ -42,7 +43,7 @@
     [slingshot "0.12.2"]
     [clj-campfire "2.2.0"]
     [clj-nsca "0.0.3"]
-    [amazonica "0.3.95" :exclusions [joda-time]]
+    [amazonica "0.3.130" :exclusions [joda-time]]
     [spootnik/kinsky "0.1.16"]
     [pjstadig/humane-test-output "0.8.1"]]
   :plugins [[lein-codox "0.10.2"]
